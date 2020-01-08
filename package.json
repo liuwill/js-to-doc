@@ -11,5 +11,8 @@
     "docx": "^5.0.0",
     "gulp": "^4.0.2",
     "gulp-concat": "^2.6.1"
+  },
+  "scripts": {
+    "generate": "node index.js"
   }
 }
