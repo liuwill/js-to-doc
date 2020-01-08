@@ -1,0 +1,12 @@
+{
+  "project": {
+    "target": "./dist",
+    "source": ["../mall"],
+    "filename": "mall.js"
+  },
+  "result": {
+    "source": "./dist/mall/mall.js",
+    "target": "./dist/docs",
+    "filename": "mall.docx"
+  }
+}

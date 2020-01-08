@@ -3,6 +3,8 @@ const through = require('through2')
 const gulp = require('gulp')
 const path = require('path')
 const concat = require('gulp-concat')
+const config = require('./config')
+const generator = require('./generator')
 
 const runTask = function (sourceList, filename, target) {
   return new Promise(function(resolve, reject) {
@@ -15,12 +17,13 @@ const runTask = function (sourceList, filename, target) {
           return
         }
 
+        console.log(chalk.magenta('Running...'))
         return through.obj(function(file, enc, cb) {
           cb()
           resolve(true)
         }, function(cb) {
           cb()
-          resolve(true)
+          reject(new Error('File Not Found'))
         })
       })(filename))
   })
@@ -28,13 +31,20 @@ const runTask = function (sourceList, filename, target) {
 }
 
 const main = () => {
-  const sourceList = [path.resolve('../calshop-app-server/lib/**/*.js')]
-  const filename = 'calshop-app.js'
-  const target = './dist/calshop'
+  const sourceList = config.project.source.map(source => path.resolve(source))
+  const filename = config.project.filename
+  const target = config.project.target
 
+  console.log(sourceList)
   console.log('Start Concat:', chalk.yellow(filename))
   return runTask(sourceList, filename, target).then(() => {
-    console.log(chalk.green('Generated:'), chalk.gray(path.join(target, filename)))
+    console.log(chalk.blue('Concat:'), chalk.gray(path.join(target, filename)))
+
+    const source = path.resolve(config.project.target, config.project.filename)
+    const docName = path.join(config.doc.target, config.doc.filename)
+    return generator.generateDoc(source, docName)
+  }).then((docName) => {
+    console.log(chalk.green('Generated:'), chalk.gray(docName))
   })
 }
 
