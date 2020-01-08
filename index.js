@@ -35,7 +35,6 @@ const main = () => {
   const filename = config.project.filename
   const target = config.project.target
 
-  console.log(sourceList)
   console.log('Start Concat:', chalk.yellow(filename))
   return runTask(sourceList, filename, target).then(() => {
     console.log(chalk.blue('Concat:'), chalk.gray(path.join(target, filename)))
