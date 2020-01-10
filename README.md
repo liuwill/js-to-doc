@@ -19,7 +19,8 @@
   },
   "result": {
     "target": "./dist/docs", // 保存docx文件的目录
-    "filename": "mall.docx" // 保存docx文件的文件名
+    "filename": "mall.docx", // 保存docx文件的文件名
+    "line": 0 // 生成的行数，0为全部
   }
 }
 ```
@@ -27,3 +28,5 @@
 ### 运行文件
 
 直接运行：`node index.js`或者`yarn run generate`
+
+可以通过参数指定需要使用的配置文件：`node index.js setting_name.json`

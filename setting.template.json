@@ -6,6 +6,7 @@
   },
   "result": {
     "target": "./dist/docs",
-    "filename": "mall.docx"
+    "filename": "mall.docx",
+    "line": 0
   }
 }

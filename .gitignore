@@ -57,3 +57,4 @@ yarn-error.log
 # yarn.lock
 /.cache
 setting.json
+/setting_*.json
