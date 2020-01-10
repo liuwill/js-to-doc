@@ -12,9 +12,14 @@ function generateDoc(srouce, target, limit = 0) {
   // Documents contain sections, you can have multiple sections per document, go here to learn more about sections
   // This simple example will only contain one section
   const docColumns = []
+  let lineCount = 0
   sourceCode.split('\n').forEach((line, index) => {
-    if (limit && index > limit ) {
+    if (limit && lineCount > limit ) {
       return false
+    }
+
+    if (line.trim()) {
+      lineCount++
     }
     docColumns.push(new Paragraph({ text: line }))
   })
